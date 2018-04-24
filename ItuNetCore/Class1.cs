@@ -10,7 +10,9 @@ namespace ItuNetCore
     {
         public string HelloWorld()
         {
-            return "Hello World";
+            ITUBIDB.Net.Management.SnmpClient client = new ITUBIDB.Net.Management.SnmpClient("test.address", "communityPass123");
+            client.Walk("1.3.6.1.2.1.17.4.3.1.1");
+            return "test successfull";
         }
     }
 }
