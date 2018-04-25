@@ -5,10 +5,12 @@ using System.Linq;
 
 namespace ItuNetDataAccessLayer
 {
-    public partial class ITUNETModel : DbContext
+    public class ITUNETModel : DbContext
     {
         public DbSet<Device> Devices { get; set; }
         public DbSet<DeviceType> DeviceTypes { get; set; }
+        public DbSet<InterfaceInformation> InterfaceInformations { get; set; }
+        public DbSet<Building> Buildings { get; set; }
 
         public ITUNETModel() : base("name=ITUNETModel")
         { 

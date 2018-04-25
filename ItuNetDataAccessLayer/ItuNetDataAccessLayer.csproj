@@ -49,8 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Building.cs" />
     <Compile Include="Entities\Device.cs" />
     <Compile Include="Entities\DeviceType.cs" />
+    <Compile Include="Entities\InterfaceInformation.cs" />
     <Compile Include="ITUNETModel.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

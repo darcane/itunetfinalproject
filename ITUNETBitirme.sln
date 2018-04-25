@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ItuNetWeb", "ItuNetWeb\", "{C15AA30A-ED83-419B-ADCD-875660C00687}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{54369d5a-08e8-41c4-86e8-e6a1c0f3e034}|ItuNetDataAccessLayer.dll;{5bcdab00-4186-4c58-921c-f4fa00d3cfd0}|ItuNetCore.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_62569"
 		Debug.AspNetCompiler.PhysicalPath = "ItuNetWeb\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62569\"

@@ -1,16 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            Hello World!
-        </div>
-    </form>
-</body>
-</html>
+<asp:Content ID="Content0" ContentPlaceHolderID="cphTitle" runat="server">ITUNET-Dashboard</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHead" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphContent" Runat="Server">
+    <h1>Blank</h1>
+    <p>This is an example of a blank page that you can use as a starting point for creating new ones.</p>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="cphFooterJs" runat="server"></asp:Content>

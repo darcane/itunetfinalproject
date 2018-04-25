@@ -17,5 +17,10 @@ namespace ItuNetDataAccessLayer
 
         public int DeviceTypeId { get; set; }
         public virtual DeviceType DeviceTypes { get; set; }
+
+        public int BuildingId { get; set; }
+        public virtual Building Building {get;set;}
+
+        public virtual List<InterfaceInformation> InterfaceInformations { get; set; }
     }
 }
