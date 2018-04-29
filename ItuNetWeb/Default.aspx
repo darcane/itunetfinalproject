@@ -1,13 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
-<asp:Content ID="Content0" ContentPlaceHolderID="cphTitle" runat="server">ITUNET-Dashboard</asp:Content>
+<asp:Content ID="Content0" ContentPlaceHolderID="cphTitle" runat="server">
+    ITUNET - Dashboard
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBreadcrumb" runat="server">
     <%--<li class="breadcrumb-item">
         <a href="/Default.aspx">Dashboard</a>
     </li>--%>
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active"><i class="fa fa-dashcube"></i>&nbsp;Dashboard</li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContent" runat="Server">
     <h1>Dashboard</h1>
@@ -20,7 +22,7 @@
                     </div>
                     <div class="mr-5">Devices</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1" href="/Device/Default.aspx">
                     <span class="float-left">Go to page</span>
                     <span class="float-right">
                         <i class="fa fa-angle-right"></i>
@@ -36,7 +38,7 @@
               </div>
               <div class="mr-5">Buildings</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="/Building/Default.aspx">
               <span class="float-left">Go to page</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
