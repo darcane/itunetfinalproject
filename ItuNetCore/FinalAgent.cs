@@ -1,4 +1,6 @@
 ﻿using ITUBIDB.Net.Management;
+using ITUBIDB.Net.Management.MIBS.Enterprise.Cisco.Mgmt;
+using ITUBIDB.Net.Management.MIBS.SnmpMIB2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,8 @@ namespace ItuNetCore
             {
                 if(fieldAgent == default(AgentManager))
                 {
-                    fieldAgent = new AgentManager(IPAddressToConnect,"bitirme",5000);
+                    fieldAgent = new AgentManager(IPAddressToConnect,"bitirme@302",5000);
+                    fieldAgent.Connect();
                 }
                 return fieldAgent;
             }
@@ -30,25 +33,50 @@ namespace ItuNetCore
             this.IPAddressToConnect = ipAddress;
         }
 
-        public SwicthBasicInformation GetBasicInformation()
+        public SwitchBasicInformation GetBasicInformation()
         {
-            Agent.Connect();
             string hostName = Agent.Get("1.3.6.1.2.1.1.5.0").ToString();
             Agent.Walk("1.3.6.1.2.1.17.4.3.1.1");
             SnmpItemList list = Agent.GetWalkResultSet();
-            return new SwicthBasicInformation()
+            return new SwitchBasicInformation()
             {
                 HostName = hostName.Replace("\"","").Replace(".itu.edu.tr",""),
                 IPAddress = IPAddressToConnect,
                 DeviceType = GetDeviceType()
             };
         }
-        public string GetDeviceType()
+
+        public List<BasicInterfaceInformation> GetInterfaceInformation()
+        {
+            List<BasicInterfaceInformation> toRet = new List<BasicInterfaceInformation>();
+            Interfaces ifs = new Interfaces(Agent);
+            Cdp cdp = new Cdp(Agent);
+            CdpResultSet cdpResult = cdp.GetCdpList();
+            List<CdpItem> cdpList = cdpResult.Values.SelectMany(i => i.Values.ToList()).ToList();
+
+            List<Interface> listWithVlan = ifs.ifTable.Values.ToList();
+            listWithVlan.RemoveAll(i => i.ifDescr.Contains("Vlan") || i.ifDescr.Contains("Null0"));
+            listWithVlan.ForEach(i => toRet.Add(BasicInterfaceInformation.ConvertInterfaceToBasicInterfaceInformation(i)));
+            foreach (var item in toRet)
+            {
+                if (cdpList.Exists(i=>i.cdpIfIndex == item.IfIndex))
+                    item.IfCdpExist = true;
+            }
+            return toRet;
+        }
+
+        protected string GetDeviceType()
         {
             Agent.Walk("1.3.6.1.2.1.47.1.1.1.1.13");
             SnmpItemList sil = Agent.GetWalkResultSet();
             SnmpItem si = sil.FirstOrDefault(i => i.Value.Value.ToString() != "");
             return si.Value.Value.ToString();
+        }
+        
+        public SnmpItemList GetWalkResultSet(string oid)
+        {
+            Agent.Walk(oid);
+            return Agent.GetWalkResultSet();
         }
     }
 }

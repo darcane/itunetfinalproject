@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\BasicInterfaceInformation.cs" />
     <Compile Include="Entities\SwicthBasicInformation.cs" />
     <Compile Include="FinalAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

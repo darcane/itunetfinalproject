@@ -16,7 +16,7 @@ namespace ItuNetDataAccessLayer
         public string DeviceKey { get; set; }
 
         public int DeviceTypeId { get; set; }
-        public virtual DeviceType DeviceTypes { get; set; }
+        public virtual DeviceType DeviceType { get; set; }
 
         public int BuildingId { get; set; }
         public virtual Building Building {get;set;}

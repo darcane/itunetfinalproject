@@ -87,9 +87,17 @@
                     <asp:DropDownList ID="ddlBuilding" runat="server" DataValueField="BuildingId" DataTextField="BuildingName" CssClass="form-control"></asp:DropDownList>
                 </div>
                 <div class="form-group">
-                    <asp:LinkButton ID="lbSaveDevice" runat="server" CssClass="btn btn-primary pull-right" OnClick="lbSaveDevice_Click">
-                        <i class="fa fa-save"></i> Save Device
-                    </asp:LinkButton>
+                    <asp:Panel ID="pnlDeviceNotExist" runat="server" Visible="true">
+                        <asp:LinkButton ID="lbSaveDevice" runat="server" CssClass="btn btn-primary pull-right" OnClick="lbSaveDevice_Click" ClientIDMode="Static">
+                            <i class="fa fa-save"></i>&nbsp;Save Device
+                        </asp:LinkButton>
+                    </asp:Panel>
+                    <asp:Panel ID="pnlDeviceExist" runat="server" Visible="false">
+                        <div class="alert alert-danger">Device already exist!</div>
+                        <asp:LinkButton ID="lbUpdateDevice" runat="server" CssClass="btn btn-info pull-right" OnClick="lbUpdateDevice_Click">
+                            <i class="fa fa-refresh"></i>&nbsp;Update Device
+                        </asp:LinkButton>
+                    </asp:Panel>
                 </div>
             </div>
             <div class="col-8">
@@ -98,22 +106,7 @@
                         <img runat="server" id="imgQR" class="qrimage" src="#" />
                     </div>
                     <div class="col-8">
-                        <table class="table table-responsive">
-                            <tbody>
-                                <tr>
-                                    <td>ad</td>
-                                    <td>asdq</td>
-                                </tr>
-                                <tr>
-                                    <td>123</td>
-                                    <td>asdwq</td>
-                                </tr>
-                                <tr>
-                                    <td>qweas</td>
-                                    <td>xcv</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <asp:GridView runat="server" ID="gv"></asp:GridView>
                     </div>
                 </div>
             </div>
@@ -161,6 +154,8 @@
             ];
             function animateProgressBar() {
                 setTimeout(() => {
+                    increment = (Math.random() * (0.1 - 3) + 3);
+                    console.log(increment);
                     progress += increment;
                     if (progress < 101) {
                         $("#loadingBar").css("width", progress + "%");

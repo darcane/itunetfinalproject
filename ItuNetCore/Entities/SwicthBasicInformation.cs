@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace ItuNetCore
 {
-    public class SwicthBasicInformation
+    [Serializable]
+    public class SwitchBasicInformation
     {
         public string HostName { get; set; }
         public string IPAddress { get; set; }
         public string DeviceType { get; set; }
+        public string DeviceKey { get; set; }
     }
 }

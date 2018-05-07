@@ -33,7 +33,7 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <asp:Repeater ID="rpBuilding" runat="server">
+                    <asp:Repeater ID="rpDevices" runat="server">
                         <ItemTemplate>
                             <tr>
                                 <td><%#Eval("DeviceId") %></td>
@@ -49,7 +49,7 @@
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
-                            <%if(rpBuilding.Items.Count == 0){%>
+                            <%if(rpDevices.Items.Count == 0){%>
                             <tr>
                                 <td colspan="7" class="text-danger"><i>No Data Found</i></td>
                             </tr>

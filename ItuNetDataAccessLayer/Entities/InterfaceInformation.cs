@@ -11,10 +11,12 @@ namespace ItuNetDataAccessLayer
     {
         [Key]
         public int InterfaceInformationId { get; set; }
+        public int InterfaceIndex { get; set; }
         public string InterfaceName { get; set; }
-        public int PortNumber { get; set; }
+        public string PortNumber { get; set; }
         public bool HasCdpInfo { get; set; }
         public bool IsOpen { get; set; }
+        public bool IsConnected { get; set; }
         public DateTime LastCheckTime { get; set; }
 
         public int DeviceId { get; set; }
