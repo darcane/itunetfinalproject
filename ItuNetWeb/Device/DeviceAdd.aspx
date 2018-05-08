@@ -33,7 +33,7 @@
         <a href="/Default.aspx"><i class="fa fa-dashcube"></i>&nbsp;Dashboard</a>
     </li>
     <li class="breadcrumb-item">
-        <a href="/Device/Default.aspx"><i class="fa fa-keyboard-o"></i>&nbsp;Device</a>
+        <a href="/Device/Default.aspx"><i class="fa fa-server fa-rotate-180"></i>&nbsp;Device</a>
     </li>
     <li class="breadcrumb-item active"><i class="fa fa-plus"></i>&nbsp;Add Device</li>
 </asp:Content>
@@ -44,7 +44,7 @@
         By giving IP Address; program will automatically detect the device and add to the system.
     </div>
     <div class="row">
-        <div class="col col-xl-4">
+        <div class="col col-xl-6">
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">IP Address</span>
@@ -57,10 +57,9 @@
                 </div>
             </div>
         </div>
-        <div class="col col-xl-8">
-            <div class="progress" style="display: none">
-                <div id="loadingBar" class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 0%"></div>
-            </div>
+        <div class="col col-xl-4">
+            &nbsp;
+            <%--<div id="loadingBar2" class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 0%"></div>--%>
         </div>
     </div>
     <asp:Panel ID="pnlAfterAdd" runat="server" Visible="false" ClientIDMode="Static">
@@ -103,7 +102,7 @@
                             </asp:Panel>
                             <asp:Panel ID="pnlDeviceExist" runat="server" Visible="false">
                                 <div class="alert alert-danger">Device already exist!</div>
-                                <asp:LinkButton ID="lbUpdateDevice" runat="server" CssClass="btn btn-info pull-right" OnClick="lbUpdateDevice_Click">
+                                <asp:LinkButton ID="lbUpdateDevice" runat="server" CssClass="btn btn-info pull-right" OnClick="lbUpdateDevice_Click" ClientIDMode="Static">
                                     <i class="fa fa-refresh"></i>&nbsp;Update Device
                                 </asp:LinkButton>
                             </asp:Panel>
@@ -167,6 +166,17 @@
             </div>
         </div>
     </asp:Panel>
+    <div class="modal fade" id="modalLoading" tabindex="-1" role="dialog" aria-labelledby="loadingModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="progress" style="display: none">
+                        <div id="loadingBar" class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooterJs" runat="Server">
     <script src="/Scripts/jquery-mask/jquery.mask.js"></script>
@@ -190,10 +200,12 @@
 
             $("#lbAddDevice").one("click", (e) => {
                 e.preventDefault();
+                $("#modalLoading").modal({});
                 $("#lbAddDevice").children("i").removeClass("fa-plus").addClass("fa-spin fa-spinner");
                 $("#lbAddDevice").addClass("disabled");
                 triggerProgressBar();
             });
+            $("#lbUpdateDevice").hover(()=>$("#lbUpdateDevice").children("i").toggleClass("fa-spin"));
         });
 
         function triggerProgressBar() {

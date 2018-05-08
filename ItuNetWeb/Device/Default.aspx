@@ -9,7 +9,7 @@
     <li class="breadcrumb-item">
         <a href="/Default.aspx"><i class="fa fa-dashcube"></i>&nbsp;Dashboard</a>
     </li>
-    <li class="breadcrumb-item active"><i class="fa fa-keyboard-o"></i>&nbsp;Devices</li>
+    <li class="breadcrumb-item active"><i class="fa fa-server fa-rotate-180"></i>&nbsp;Devices</li>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphContent" Runat="Server">
     <div class="card mb-3">
@@ -20,7 +20,7 @@
             </span>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <%--<div class="table-responsive">--%>
                 <table id="dataTable" class="table table-bordered">
                     <thead>
                         <tr>
@@ -43,13 +43,14 @@
                                 <td><%#Eval("DeviceType.DeviceTypeName") %></td>
                                 <td><%#Eval("Building.BuildingName") %></td>
                                 <td>
-                                    <a href="#" title="Edit"><i class="fa fa-pencil"></i></a>
-                                    <a href="#" title="Delete"><i class="fa fa-trash"></i></a>
+                                    <a href="#" title="Edit" class="badge badge-primary"><i class="fa fa-pencil"></i></a>
+                                    <a href="#" title="Delete" class="badge badge-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
-                            <%if(rpDevices.Items.Count == 0){%>
+                            <%if (rpDevices.Items.Count == 0)
+                            {%>
                             <tr>
                                 <td colspan="7" class="text-danger"><i>No Data Found</i></td>
                             </tr>
@@ -57,7 +58,7 @@
                         </FooterTemplate>
                     </asp:Repeater>
                 </table>
-            </div>
+            <%--</div>--%>
         </div>
     </div>
 </asp:Content>

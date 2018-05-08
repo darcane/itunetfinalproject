@@ -21,10 +21,28 @@
     <link href="/Scripts/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="cphHead" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        @font-face{
+            font-family : 'ShatterWeb';
+            src: url("/Content/ShatterWeb.ttf");
+        }
+        .logo{
+            font-family:'ShatterWeb';
+        }
+    </style>
 </head>
 <body class="sticky-footer bg-dark" id="page-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" id="mainNav">
-        <a class="navbar-brand" href="/Default.aspx">ITUNET</a>
+        <a class="navbar-brand text-justify" href="/Default.aspx">
+            <h2 class="logo"><i class="fa fa-ravelry"></i>&nbsp;
+                <span style="color:#3689F0">I</span>
+                <span style="color:#ED4137">T</span>
+                <span style="color:#FEBB35">U</span>
+                <span style="color:#3689F0">N</span>
+                <span style="color:#2FA85A">E</span>
+                <span style="color:#ED4137">T</span>
+            </h2>
+        </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,7 +56,7 @@
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Devices">
                     <a class="nav-link" href="/Device/Default.aspx">
-                        <i class="fa fa-fw fa-keyboard-o"></i>
+                        <i class="fa fa-fw fa-server fa-rotate-180"></i>
                         <span class="nav-link-text">Devices</span>
                     </a>
                 </li>
@@ -98,7 +116,7 @@
     </nav>
     <form id="mainForm" runat="server">
         <div class="content-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid mb-4">
                 <!-- Breadcrumbs-->
                 <ol class="breadcrumb">
                     <asp:ContentPlaceHolder ID="cphBreadcrumb" runat="server"></asp:ContentPlaceHolder>
