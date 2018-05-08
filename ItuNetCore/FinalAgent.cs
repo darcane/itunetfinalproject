@@ -26,6 +26,20 @@ namespace ItuNetCore
             }
         }
 
+        public List<Interface> VlanList {
+            get
+            {
+                return (new Interfaces(Agent)).ifTable.Values.Where(i => i.ifDescr.Contains("Vlan")).ToList();
+            }
+        }
+
+        public void ReconnectWithVlan(string vlan = "")
+        {
+            fieldAgent.Disconnect();
+            this.fieldAgent = new AgentManager(IPAddressToConnect,string.Concat("bitirme",vlan),5000);
+            fieldAgent.Connect();
+        }
+
         public string IPAddressToConnect { get; private set; }
 
         public FinalAgent(string ipAddress)

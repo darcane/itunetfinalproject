@@ -19,7 +19,7 @@ public partial class SnmpTest : BasePage
 
     protected void lbGet_Click(object sender, EventArgs e)
     {
-        string oid = tbOid.Text.Trim();
+        string oid = tbOid.Text.Trim();//selam
         FinalAgent fa = new FinalAgent("10.0.100.100");
         SnmpItemList siList = fa.GetWalkResultSet(oid);
         Dictionary<string, string> listToBind = new Dictionary<string, string>();

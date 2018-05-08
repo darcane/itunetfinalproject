@@ -83,8 +83,8 @@ public partial class Device_DeviceAdd : BasePage
         tbDeviceKey.Text = SwitchInfo.DeviceKey;
         tbDeviceType.Text = SwitchInfo.DeviceType;
         QRCodeGenerate(SwitchInfo.DeviceKey);
-        gv.DataSource = InterfaceInfo;
-        gv.DataBind();
+        rpInterfaces.DataSource = InterfaceInfo;
+        rpInterfaces.DataBind();
     }
     protected void lbSaveDevice_Click(object sender, EventArgs e)
     {
@@ -151,7 +151,8 @@ public partial class Device_DeviceAdd : BasePage
     private void QRCodeGenerate(string deviceKey)
     {
         QRCodeGenerator qrGenerator = new QRCodeGenerator();
-        QRCodeData qrCodeData = qrGenerator.CreateQrCode("http://local.itunet/Device/DeviceDetail.aspx?" + deviceKey, QRCodeGenerator.ECCLevel.Q);
+        string href = "http://local.itunet/Device/DeviceDetail.aspx?" + deviceKey;
+        QRCodeData qrCodeData = qrGenerator.CreateQrCode(href, QRCodeGenerator.ECCLevel.Q);
         QRCode qrCode = new QRCode(qrCodeData);
         Bitmap qrCodeImage = qrCode.GetGraphic(20,Color.Black,Color.White,false);
         using (MemoryStream ms = new MemoryStream())
@@ -159,6 +160,8 @@ public partial class Device_DeviceAdd : BasePage
             qrCodeImage.Save(ms, ImageFormat.Gif);
             var base64Data = Convert.ToBase64String(ms.ToArray());
             imgQR.Src = "data:image/gif;base64," + base64Data;
+            qrHref.HRef = href;
+            qrHref.InnerHtml = href;
         }
     }
     private string CreateDeviceKey()
