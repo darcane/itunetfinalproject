@@ -19,7 +19,7 @@ namespace ItuNetCore
             {
                 if(fieldAgent == default(AgentManager))
                 {
-                    fieldAgent = new AgentManager(IPAddressToConnect,"bitirme@302",5000);
+                    fieldAgent = new AgentManager(IPAddressToConnect,"bitirme",5000);
                     fieldAgent.Connect();
                 }
                 return fieldAgent;
@@ -36,7 +36,7 @@ namespace ItuNetCore
         public void ReconnectWithVlan(string vlan = "")
         {
             fieldAgent.Disconnect();
-            this.fieldAgent = new AgentManager(IPAddressToConnect,string.Concat("bitirme",vlan),5000);
+            this.fieldAgent = new AgentManager(IPAddressToConnect,string.Concat("bitirme@",vlan),5000);
             fieldAgent.Connect();
         }
 
@@ -91,6 +91,11 @@ namespace ItuNetCore
         {
             Agent.Walk(oid);
             return Agent.GetWalkResultSet();
+        }
+
+        public object Get(string oid)
+        {
+            return Agent.Get(oid).Value;
         }
     }
 }

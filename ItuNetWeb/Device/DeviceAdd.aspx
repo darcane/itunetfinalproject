@@ -190,7 +190,7 @@
                 },
                 placeholder: "___.___.___.___"
             });
-            $('#tbIPAddress').mask('099.099.099.099');
+            //$('#tbIPAddress').mask('099.099.099.099');
 
             if ($("#pnlAfterAdd").length) {
                 $("#lbAddDevice").children("i").removeClass("fa-plus");
