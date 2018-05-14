@@ -3,6 +3,7 @@
 İTÜ Matematik Mühendisliği, Fen Edebiyat Fakültesi öğrencileri
 - Erdem Darcan
 - Batuhan Bakıp
+
 tarafından geliştirilen 
 "Ağ Cihazlarının Yönetimini ve Kontrolünü Sağlayacak Otonom Bir Yazılımın Geliştirilmesi" 
 konulu bitirme çalışması.
