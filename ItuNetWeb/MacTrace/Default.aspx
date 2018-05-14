@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphBreadcrumb" Runat="Server">
     <li class="breadcrumb-item">
-        <a href="/Default.aspx"><i class="fa fa-dashcube"></i>&nbsp;Dashboard</a>
+        <a href="/Default.aspx"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
     </li>
     <li class="breadcrumb-item active"><i class="fa fa-sitemap"></i>&nbsp;Find a MAC</li>
 </asp:Content>
@@ -27,8 +27,15 @@
                 </div>
             </div>
             <div class="form-group">
-                <asp:Label ID="lblTest" runat="server"></asp:Label>
+                <label for="ddlDevice">Choose a Device to begin search</label>
+                <asp:DropDownList ID="ddlDevice" runat="server" DataTextField="Display" DataValueField="Ip" CssClass="form-control"></asp:DropDownList>
             </div>
+            <div class="form-group">
+                <asp:GridView ID="gvRes" runat="server"></asp:GridView>
+            </div>
+        </div>
+        <div class="col col-xl-6">
+            <asp:GridView ID="gv" runat="server"></asp:GridView>
         </div>
     </div>
 </asp:Content>

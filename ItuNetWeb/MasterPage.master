@@ -50,7 +50,7 @@
             <ul class="navbar-nav navbar-sidenav" id="menuAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                     <a class="nav-link" href="/Default.aspx">
-                        <i class="fa fa-fw fa-dashcube"></i>
+                        <i class="fa fa-fw fa-dashboard"></i>
                         <span class="nav-link-text">Dashboard</span>
                     </a>
                 </li>
@@ -64,6 +64,12 @@
                     <a class="nav-link" href="/Building/Default.aspx">
                         <i class="fa fa-fw fa-building"></i>
                         <span class="nav-link-text">Buildings</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Find a MAC">
+                    <a class="nav-link" href="/MacTrace/Default.aspx">
+                        <i class="fa fa-fw fa-sitemap"></i>
+                        <span class="nav-link-text">Find a MAC</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Data Management">
@@ -163,6 +169,11 @@
     <script src="/Scripts/jquery-easing/jquery.easing.js"></script>
     <script src="/Scripts/sb-admin.js"></script>
     <%--<script src="/Scripts/datatables/dataTables.bootstrap4.js"></script>--%>
+    <script type="text/javascript">
+        $(document).ready(() => {
+            if (!$(".breadcrumb").children().length) $(".breadcrumb").hide();
+        });
+    </script>
     <asp:ContentPlaceHolder ID="cphFooterJs" runat="server">
 
     </asp:ContentPlaceHolder>

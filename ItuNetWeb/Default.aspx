@@ -9,10 +9,21 @@
     <%--<li class="breadcrumb-item">
         <a href="/Default.aspx">Dashboard</a>
     </li>--%>
-    <li class="breadcrumb-item active"><i class="fa fa-dashcube"></i>&nbsp;Dashboard</li>
+    <%--<li class="breadcrumb-item active"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</li>--%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContent" runat="Server">
-    <h1>Dashboard</h1>
+    <div class="jumbotron text-center">
+        <h1 class="display-1 logo"><i class="fa fa-ravelry"></i>&nbsp;
+            <span style="color:#3689F0">I</span>
+            <span style="color:#ED4137">T</span>
+            <span style="color:#FEBB35">U</span>
+            <span style="color:#3689F0">N</span>
+            <span style="color:#2FA85A">E</span>
+            <span style="color:#ED4137">T</span>
+            <br />
+            <span class="text-muted">Dashboard</span>
+        </h1>
+    </div>
     <div class="row">
         <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-primary o-hidden h-100">

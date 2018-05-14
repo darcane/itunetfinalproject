@@ -66,8 +66,9 @@ namespace ItuNetCore
             Interfaces ifs = new Interfaces(Agent);
             Cdp cdp = new Cdp(Agent);
             CdpResultSet cdpResult = cdp.GetCdpList();
-            List<CdpItem> cdpList = cdpResult.Values.SelectMany(i => i.Values.ToList()).ToList();
 
+            List<CdpItem> cdpList = cdpResult.Values.SelectMany(i => i.Values.ToList()).ToList();
+            
             List<Interface> listWithVlan = ifs.ifTable.Values.ToList();
             listWithVlan.RemoveAll(i => i.ifDescr.Contains("Vlan") || i.ifDescr.Contains("Null0"));
             listWithVlan.ForEach(i => toRet.Add(BasicInterfaceInformation.ConvertInterfaceToBasicInterfaceInformation(i)));
@@ -77,6 +78,13 @@ namespace ItuNetCore
                     item.IfCdpExist = true;
             }
             return toRet;
+        }
+
+        public List<CdpItem> GetCdpList()
+        {
+            Cdp cdp = new Cdp(Agent);
+            CdpResultSet cdpResult = cdp.GetCdpList();
+            return cdpResult.Values.SelectMany(i => i.Values.ToList()).ToList();
         }
 
         protected string GetDeviceType()

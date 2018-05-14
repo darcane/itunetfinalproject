@@ -30,7 +30,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphBreadcrumb" runat="Server">
     <li class="breadcrumb-item">
-        <a href="/Default.aspx"><i class="fa fa-dashcube"></i>&nbsp;Dashboard</a>
+        <a href="/Default.aspx"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
     </li>
     <li class="breadcrumb-item">
         <a href="/Device/Default.aspx"><i class="fa fa-server fa-rotate-180"></i>&nbsp;Device</a>
