@@ -21,4 +21,4 @@ Proje kapsamında;
    - C# 7.0
 teknolojileri kullanılmıştır.
 
-Matematik Mühendisliği Araştırma Görevlisi EVREN TANRIÖVER'e teşekkürü borç biliriz.
+Matematik Mühendisliği Öğretim Görevlisi EVREN TANRIÖVER'e teşekkürü borç biliriz.
