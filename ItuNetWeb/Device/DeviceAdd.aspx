@@ -33,7 +33,7 @@
         <a href="/Default.aspx"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
     </li>
     <li class="breadcrumb-item">
-        <a href="/Device/Default.aspx"><i class="fa fa-hdd"></i>&nbsp;Device</a>
+        <a href="/Device/Default.aspx"><i class="fa fa-server fa-rotate-180"></i>&nbsp;Device</a>
     </li>
     <li class="breadcrumb-item active"><i class="fa fa-plus"></i>&nbsp;Add Device</li>
 </asp:Content>

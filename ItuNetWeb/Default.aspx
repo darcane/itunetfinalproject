@@ -29,7 +29,7 @@
             <div class="card text-white bg-primary o-hidden h-100">
                 <div class="card-body">
                     <div class="card-body-icon">
-                        <i class="fa fa-fw fa-hdd"></i>
+                        <i class="fa fa-fw fa-server fa-rotate-180"></i>
                     </div>
                     <div class="mr-5">Devices</div>
                 </div>
