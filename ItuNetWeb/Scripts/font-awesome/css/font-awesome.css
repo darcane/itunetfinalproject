@@ -970,7 +970,7 @@
 .fa-gamepad:before {
   content: "\f11b";
 }
-.fa-server fa-rotate-180:before {
+.fa-keyboard-o:before {
   content: "\f11c";
 }
 .fa-flag-o:before {
@@ -1699,7 +1699,7 @@
 .fa-connectdevelop:before {
   content: "\f20e";
 }
-.fa-dashboard:before {
+.fa-dashcube:before {
   content: "\f210";
 }
 .fa-forumbee:before {
@@ -1793,7 +1793,7 @@
 .fa-whatsapp:before {
   content: "\f232";
 }
-.fa-server fa-rotate-180:before {
+.fa-server:before {
   content: "\f233";
 }
 .fa-user-plus:before {

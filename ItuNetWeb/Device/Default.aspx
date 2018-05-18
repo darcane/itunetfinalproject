@@ -9,7 +9,7 @@
     <li class="breadcrumb-item">
         <a href="/Default.aspx"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
     </li>
-    <li class="breadcrumb-item active"><i class="fa fa-server fa-rotate-180"></i>&nbsp;Devices</li>
+    <li class="breadcrumb-item active"><i class="fa fa-hdd"></i>&nbsp;Devices</li>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphContent" Runat="Server">
     <div class="card mb-3">

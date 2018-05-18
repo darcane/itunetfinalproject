@@ -17,4 +17,26 @@ public partial class BasePage : System.Web.UI.Page
             return fieldDataProvider;
         }
     }
+
+    public delegate void DelegateAttempt();
+    public void AttemptMethod(DelegateAttempt method)
+    {
+        int attempt = 0;
+        try
+        {
+            method();
+        }
+        catch (Exception ex)
+        {
+            if (attempt < 3)
+            {
+                attempt++;
+                method();
+            }
+            else
+            {
+                throw new Exception($"{attempt} attempts failed. Exception : {ex.Message}");
+            }
+        }
+    }
 }

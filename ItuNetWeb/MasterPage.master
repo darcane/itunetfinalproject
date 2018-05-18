@@ -56,7 +56,7 @@
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Devices">
                     <a class="nav-link" href="/Device/Default.aspx">
-                        <i class="fa fa-fw fa-server fa-rotate-180"></i>
+                        <i class="fa fa-fw fa-hdd"></i>
                         <span class="nav-link-text">Devices</span>
                     </a>
                 </li>
