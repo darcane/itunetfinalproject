@@ -4,6 +4,15 @@
     ITUNET - Find MAC
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphHead" Runat="Server">
+    <style type="text/css">
+        .table{
+            /*width:auto !important;*/
+            font-size:smaller !important;
+        }
+        img{
+            width:24px !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphBreadcrumb" Runat="Server">
     <li class="breadcrumb-item">
@@ -36,7 +45,13 @@
         </div>
         <div class="col col-xl-6">
             <asp:GridView ID="gv" runat="server"></asp:GridView>
+            <asp:Repeater runat="server" ID="rp">
+                <ItemTemplate>
+                    <span class="tableJson" data-content='<%#GetDataItem() %>'>test</span>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
+        <div id="test"></div>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooterJs" Runat="Server">
@@ -48,6 +63,44 @@
                     'H': { pattern: /[A-Fa-f0-9]/ }
                 },
                 placeholder: "00:00:00:00:00:00"
+            });
+
+            $.each($(".tableJson"), (index,value) => {
+                var tableJson = $(value).data('content');
+                var div = $("<div>").addClass("card text-center");
+                var divHeader = $("<div>").addClass("card-header").html(tableJson.ip + " - " + tableJson.host);
+                var divBody = $("<div>").addClass("card-body table-responsive p-0 m-0");
+                var table = $("<table>").addClass("table table-sm table-bordered table-dark text-white m-0");
+                var tbody = $("<tbody>");
+                var tr1 = $("<tr>");
+                var tr2 = $("<tr>");
+                for (var i = 0; i < tableJson.fa; i++) {
+                    var td = $("<td>").html("0/" + (i + 1) + "<br />");
+                    var img = $("<img>");
+                    if ($.inArray(i + 1, tableJson.facon) != -1) img.attr("src", "/Content/Network.png");
+                    else if ($.inArray(i + 1, tableJson.facd) != -1) img.attr("src", "/Content/ico_green.png");
+                    else img.attr("src", "/Content/ico_red.png");
+                    td.append(img);
+                    if (i % 2 == 0) {
+                        tr1.append(td);
+                    }
+                    else {
+                        tr2.append(td);
+                    }
+                }
+                var logoTd = $("<td>").attr("colspan", tableJson.gi).html("LOGO");
+                tr1.append(logoTd);
+                for (var i = 0; i < tableJson.gi; i++) {
+                    var td = $("<td>").html("0/" + (i + 1) + "<br />");
+                    var img = $("<img>");
+                    if ($.inArray(i + 1, tableJson.gicon) != -1) img.attr("src", "/Content/Network.png");
+                    else if ($.inArray(i + 1, tableJson.gicd) != -1) img.attr("src", "/Content/ico_green.png");
+                    else img.attr("src", "/Content/ico_red.png");
+                    td.append(img);
+                    tr2.append(td);
+                }
+
+                $("#test").append(div.append(divHeader).append(divBody.append(table.append(tbody.append(tr1).append(tr2)))));
             });
         });
     </script>

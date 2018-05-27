@@ -25,6 +25,7 @@ public partial class MacTrace_Default : BasePage
 
     private void FindMacAlghrotihm()
     {
+        List<JsonContent> ipsWalkedJson = new List<JsonContent>();
         Dictionary<string, string> ipsWalked = new Dictionary<string, string>();
         bool cont = true;
         string ip = ddlDevice.SelectedValue;
@@ -36,7 +37,18 @@ public partial class MacTrace_Default : BasePage
         }
         while (cont)
         {
-            ipsWalked.Add(ip, "Not found in this device");
+            Device device = DataProvider.Devices.FirstOrDefault(i => i.IpAddress == ip);
+            JsonContent jsonContent = new JsonContent() {
+                IpAddress = ip,
+                HostName = device.HostName,
+                FastEthernetCount = device.InterfaceInformations.Where(i => i.InterfaceName.StartsWith("Fa")).Count(),
+                GigabitCount = device.InterfaceInformations.Where(i => i.InterfaceName.StartsWith("Gi")).Count(),
+                FaConnected = device.InterfaceInformations.Where(i=>i.InterfaceName.StartsWith("Fa") && i.IsConnected).Select(i=> Convert.ToInt32(i.PortNumber.Replace("/",""))).ToList(),
+                GiConnected = device.InterfaceInformations.Where(i => i.InterfaceName.StartsWith("Gi") && i.IsConnected).Select(i => Convert.ToInt32(i.PortNumber.Replace("/", ""))).ToList(),
+                FaConnections = new List<int>(),
+                GiConnections = new List<int>(),
+            };
+            //ipsWalked.Add(ip, "Not found in this device");
             FinalAgent fa = new FinalAgent(ip);
             object macBridgeNo = null;
             List<ITUBIDB.Net.Management.MIBS.SnmpMIB2.Interface> vlanStatic = fa.VlanList;
@@ -51,19 +63,27 @@ public partial class MacTrace_Default : BasePage
                 object macIfIndexNo = fa.Get("1.3.6.1.2.1.17.1.4.1.2." + macBridgeNo);
                 object macIfDescr = fa.Get("1.3.6.1.2.1.31.1.1.1.1." + macIfIndexNo);
                 BasicInterfaceInformation intf = fa.GetInterfaceInformation().FirstOrDefault(i => i.IfIndex == Convert.ToInt32(macIfIndexNo.ToString()));
-                ipsWalked[ip] = "Found on : " + intf.IfDescription;
+                if (intf.IfDescription.Contains("Fa"))
+                    jsonContent.FaConnections.Add(Convert.ToInt32(intf.IfDescription.Last().ToString()));
+                else
+                    jsonContent.GiConnections.Add(Convert.ToInt32(intf.IfDescription.Last().ToString()));
+                ipsWalkedJson.Add(jsonContent);
+                //ipsWalked[ip] = "Found on : " + intf.IfDescription;
                 if (intf.IfCdpExist)
                 {
                     ip = fa.GetCdpList().FirstOrDefault(i => i.cdpIfIndex == intf.IfIndex).cdpAddress;
                 }
-                if (ipsWalked.ContainsKey(ip) || !DataProvider.Devices.Any(i => i.IpAddress == ip)) cont = false;
+                if (ipsWalkedJson.Where(i=>i.IpAddress == ip).Count() > 0 || !DataProvider.Devices.Any(i => i.IpAddress == ip)) cont = false;
             }
             else
             {
+                ipsWalkedJson.Add(jsonContent);
                 cont = false;
             }
         }
-        gvRes.DataSource = ipsWalked;
+        rp.DataSource = ipsWalkedJson.Select(i => i.ToString()).ToArray();
+        rp.DataBind();
+        gvRes.DataSource = ipsWalkedJson.Select(i=>i.ToString()).ToArray();
         gvRes.DataBind();
     }
     private void BindPage()
@@ -101,4 +121,28 @@ public partial class MacTrace_Default : BasePage
         public string Ip { get; set; }
     }
 
+    private struct JsonContent
+    {
+        public string IpAddress { get; set; }
+        public string HostName { get; set; }
+        public int FastEthernetCount { get; set; }
+        public int GigabitCount { get; set; }
+        public List<int> FaConnected { get; set; }
+        public List<int> GiConnected { get; set; }
+        public List<int> FaConnections { get; set; }
+        public List<int> GiConnections { get; set; }
+        public override string ToString()
+        {
+            return "{" +
+                $"\"host\" : \"{HostName}\", " +
+                $"\"ip\" : \"{IpAddress}\", " +
+                $"\"fa\" : {FastEthernetCount}, " +
+                $"\"gi\" : {GigabitCount}, " +
+                $"\"facd\" : [{string.Join(",", FaConnected)}], " +
+                $"\"gicd\" : [{string.Join(",", GiConnected)}], " +
+                $"\"facon\" : [{string.Join(",",FaConnections)}]," +
+                $"\"gicon\" : [{string.Join(",", GiConnections)}] " + 
+                "}";
+        }
+    }
 }

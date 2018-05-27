@@ -25,55 +25,60 @@
     </asp:GridView>
     <div class="row">
         <div class="col-md-10">
-            <div class="card text-center">
-                <div class="card-header">
-                    10.0.100.100 - darcane
-                </div>
-                <div class="card-body">
-                    <table class="table table-sm table-bordered bg-secondary text-white p-3">
-                        <tbody>
-                            <tr>
-                                <td>Fa0/1<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/2<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/3<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/4<br/><img src="Content/ico_green.png" /></td>
-                                <td>Fa0/5<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/6<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/7<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/8<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/9<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/10<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/11<br/><img src="Content/ico_red.png" /></td>
-                                <td colspan="2">LOGO</td>
-                                <%--<td rowspan="2" class="align-items-center"><img src="https://dwglogo.com/wp-content/uploads/2016/05/Cisco_logo.svg_.png" height="126"/></td>--%>
-                            </tr>
-                            <tr>
-                                <td>Fa0/12<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/13<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/14<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/15<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/16<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/17<br/><img src="Content/ico_yellow.png" /></td>
-                                <td>Fa0/18<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/19<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/20<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/21<br/><img src="Content/ico_red.png" /></td>
-                                <td>Fa0/22<br/><img src="Content/ico_red.png" /></td>
-                                <td>Gi0/1<br/><img src="Content/ico_red.png" /></td>
-                                <td>Gi0/2<br/><img src="Content/ico_red.png" /></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="col-md-12">
+
+                <div class="card text-center">
+                    <div class="card-header">
+                        10.0.100.100 - darcane
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm table-bordered bg-secondary text-white p-3">
+                            <tbody>
+                                <tr>
+                                    <td>Fa0/1<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/2<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/3<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/4<br/><img src="Content/ico_green.png" /></td>
+                                    <td>Fa0/5<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/6<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/7<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/8<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/9<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/10<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/11<br/><img src="Content/ico_red.png" /></td>
+                                    <td colspan="2">LOGO</td>
+                                    <%--<td rowspan="2" class="align-items-center"><img src="https://dwglogo.com/wp-content/uploads/2016/05/Cisco_logo.svg_.png" height="126"/></td>--%>
+                                </tr>
+                                <tr>
+                                    <td>Fa0/12<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/13<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/14<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/15<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/16<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/17<br/><img src="Content/ico_yellow.png" /></td>
+                                    <td>Fa0/18<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/19<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/20<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/21<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Fa0/22<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Gi0/1<br/><img src="Content/ico_red.png" /></td>
+                                    <td>Gi0/2<br/><img src="Content/ico_red.png" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <div id="test" class=""></div>
+            </div>
         </div>
-        <div class="text-center col-md-4 border border-danger">
+        <div class="text-center col-md-2 border border-danger">
             &nbsp;
         </div>
     </div>
     <span id="tableJson" data-content='{"fa": 48, "gi" : 2, "con" : [4,6,11], "gicon": [1,2], "ip" : "10.0.100.100", "host" : "darcane" }'></span>
     <div class="row">
-        <div id="test" class="col-md-10"></div>
     </div>
     
 
