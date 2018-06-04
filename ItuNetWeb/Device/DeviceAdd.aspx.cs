@@ -116,6 +116,7 @@ public partial class Device_DeviceAdd : BasePage
         }));
         DataProvider.Devices.Add(toAdd);
         DataProvider.SaveChanges();
+        Response.Redirect("Default.aspx");
     }
     protected void lbUpdateDevice_Click(object sender, EventArgs e)
     {
@@ -147,12 +148,13 @@ public partial class Device_DeviceAdd : BasePage
             interf.LastCheckTime = DateTime.Now;
         }
         DataProvider.SaveChanges();
+        Response.Redirect("Default.aspx");
     }
     private void QRCodeGenerate(string deviceKey)
     {
         QRCodeGenerator qrGenerator = new QRCodeGenerator();
-        string href = "http://local.itunet/Device/DeviceDetail.aspx?" + deviceKey;
-        QRCodeData qrCodeData = qrGenerator.CreateQrCode(href, QRCodeGenerator.ECCLevel.Q);
+        string href = "http://local.itunet/Device/Details.aspx?key=" + deviceKey;
+        QRCodeData qrCodeData = qrGenerator.CreateQrCode(href, QRCodeGenerator.ECCLevel.L);
         QRCode qrCode = new QRCode(qrCodeData);
         Bitmap qrCodeImage = qrCode.GetGraphic(20,Color.Black,Color.White,false);
         using (MemoryStream ms = new MemoryStream())

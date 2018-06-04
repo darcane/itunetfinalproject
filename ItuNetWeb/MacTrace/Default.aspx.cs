@@ -47,6 +47,7 @@ public partial class MacTrace_Default : BasePage
                 GiConnected = device.InterfaceInformations.Where(i => i.InterfaceName.StartsWith("Gi") && i.IsConnected).Select(i => Convert.ToInt32(i.PortNumber.Replace("/", ""))).ToList(),
                 FaConnections = new List<int>(),
                 GiConnections = new List<int>(),
+                Building = device.Building.BuildingName
             };
             //ipsWalked.Add(ip, "Not found in this device");
             FinalAgent fa = new FinalAgent(ip);
@@ -83,8 +84,6 @@ public partial class MacTrace_Default : BasePage
         }
         rp.DataSource = ipsWalkedJson.Select(i => i.ToString()).ToArray();
         rp.DataBind();
-        gvRes.DataSource = ipsWalkedJson.Select(i=>i.ToString()).ToArray();
-        gvRes.DataBind();
     }
     private void BindPage()
     {
@@ -125,6 +124,7 @@ public partial class MacTrace_Default : BasePage
     {
         public string IpAddress { get; set; }
         public string HostName { get; set; }
+        public string Building { get; set; }
         public int FastEthernetCount { get; set; }
         public int GigabitCount { get; set; }
         public List<int> FaConnected { get; set; }
@@ -140,8 +140,9 @@ public partial class MacTrace_Default : BasePage
                 $"\"gi\" : {GigabitCount}, " +
                 $"\"facd\" : [{string.Join(",", FaConnected)}], " +
                 $"\"gicd\" : [{string.Join(",", GiConnected)}], " +
-                $"\"facon\" : [{string.Join(",",FaConnections)}]," +
-                $"\"gicon\" : [{string.Join(",", GiConnections)}] " + 
+                $"\"facon\" : [{string.Join(",", FaConnections)}], " +
+                $"\"gicon\" : [{string.Join(",", GiConnections)}], " +
+                $"\"bding\" : \"{Building}\" " +
                 "}";
         }
     }

@@ -39,19 +39,23 @@
                 <label for="ddlDevice">Choose a Device to begin search</label>
                 <asp:DropDownList ID="ddlDevice" runat="server" DataTextField="Display" DataValueField="Ip" CssClass="form-control"></asp:DropDownList>
             </div>
-            <div class="form-group">
-                <asp:GridView ID="gvRes" runat="server"></asp:GridView>
-            </div>
         </div>
         <div class="col col-xl-6">
             <asp:GridView ID="gv" runat="server"></asp:GridView>
             <asp:Repeater runat="server" ID="rp">
                 <ItemTemplate>
-                    <span class="tableJson" data-content='<%#GetDataItem() %>'>test</span>
+                    <span class="tableJson" data-content='<%#GetDataItem() %>'></span>
                 </ItemTemplate>
             </asp:Repeater>
         </div>
-        <div id="test"></div>
+    </div>
+    <div class="row">
+        <div id="visualizeDiv" class="col-xl-6 col-sm-9">
+
+        </div>
+        <div id="visualizeDiv2" class="col-xl-2 col-sm-3">
+
+        </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooterJs" Runat="Server">
@@ -65,15 +69,19 @@
                 placeholder: "00:00:00:00:00:00"
             });
 
-            $.each($(".tableJson"), (index,value) => {
+            $.each($(".tableJson"), (index, value) => {
+                if ($("#visualizeDiv").children().length > 0) $("#visualizeDiv").append($("<div>").addClass("text-center mb-3").append($("<i>").addClass("fa fa-angle-down fa-3x")));
+                if ($("#visualizeDiv2").children().length > 0) $("#visualizeDiv2").append($("<div>").addClass("text-center mb-3").append($("<i>").addClass("fa fa-angle-down fa-3x")));
+                //LeftVisualize
                 var tableJson = $(value).data('content');
-                var div = $("<div>").addClass("card text-center");
+                var div = $("<div>").addClass("card text-center mb-3");
                 var divHeader = $("<div>").addClass("card-header").html(tableJson.ip + " - " + tableJson.host);
                 var divBody = $("<div>").addClass("card-body table-responsive p-0 m-0");
                 var table = $("<table>").addClass("table table-sm table-bordered table-dark text-white m-0");
                 var tbody = $("<tbody>");
                 var tr1 = $("<tr>");
                 var tr2 = $("<tr>");
+                var tr3 = $("<tr>").append($("<td>").attr("colspan",tableJson.fa/2).html("FastEthernet")).append($("<td>").attr("colspan",tableJson.gi).html("GigabitEthernet"));
                 for (var i = 0; i < tableJson.fa; i++) {
                     var td = $("<td>").html("0/" + (i + 1) + "<br />");
                     var img = $("<img>");
@@ -99,8 +107,16 @@
                     td.append(img);
                     tr2.append(td);
                 }
-
-                $("#test").append(div.append(divHeader).append(divBody.append(table.append(tbody.append(tr1).append(tr2)))));
+                $("#visualizeDiv").append(div.append(divHeader).append(divBody.append(table.append(tbody.append(tr1).append(tr2).append(tr3)))));
+                //RightVisualize
+                var divR = $("<div>").addClass("card text-center mb-3");
+                var divHeaderR = $("<div>").addClass("card-header").html(tableJson.ip + " - " + tableJson.host);
+                var divBodyR = $("<div>").addClass("card-body").css("min-height","132px");
+                var spanR = $("<span>");
+                if (tableJson.facon.length > 0) spanR.append("Found on: <br/>Fast Ethernet 0/" + tableJson.facon);
+                else if (tableJson.gicon.length > 0) spanR.append("Found on: <br/>Gigabit Ethernet 0/" + tableJson.gicon);
+                else spanR.append("Not found on this device.");
+                $("#visualizeDiv2").append(divR.append(divHeaderR).append(divBodyR.append($("<div>").html(tableJson.bding)).append(spanR)));
             });
         });
     </script>

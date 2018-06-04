@@ -37,8 +37,8 @@
                                 <td><%#Eval("BuildingName") %></td>
                                 <td><%#Eval("BuildingKey") %></td>
                                 <td>
-                                    <a href="#" title="Edit"><i class="fa fa-pencil"></i></a>
-                                    <a href="#" title="Delete"><i class="fa fa-trash"></i></a>
+                                    <a href="#" title="Edit" class="badge badge-primary"><i class="fa fa-pencil"></i></a>
+                                    <a href="#" title="Delete" class="badge badge-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         </ItemTemplate>
